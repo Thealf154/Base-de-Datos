@@ -1,0 +1,19 @@
+@import 'themes.css';
+
+.filling-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+}
+
+.filling-emoji {
+    font-size: 7rem;
+}
+
+.filling-text {
+    font-size: 2rem;
+    color: var(--gray3);
+}

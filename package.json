@@ -1,25 +1,16 @@
 {
-  "name": "server",
+  "name": "base-de-datos",
   "version": "1.0.0",
-  "description": "API que conecta con un servidor o sistema de manejador de bases de datos",
+  "description": "Sistema de control escolar, backend y frontend",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index.js",
-    "start": "node index.js"
+    "test": "nodemon index.js"
   },
   "keywords": [
-    "API",
-    "SQL"
+    "node",
+    "react",
+    "sql"
   ],
   "author": "Alfredo Vanegas Arcega",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.2",
-    "jsonwebtoken": "^8.5.1",
-    "morgan": "^1.10.0",
-    "mysql": "^2.18.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
-  }
+  "license": "ISC"
 }

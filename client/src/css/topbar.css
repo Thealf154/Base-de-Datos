@@ -1,0 +1,126 @@
+@import 'themes.css';
+
+.topbar {
+    background-color: var(--background-item);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    height: var(--topbar-width); 
+    box-shadow: rgb(149 157 165 / 20%) 20px 10px 24px;
+}
+
+.top-expanded {
+    margin-left: var(--nav-width-expanded);
+    width: calc(100% - var(--nav-width-expanded));
+}
+
+.top-contracted {
+    margin-left: var(--nav-width-contracted);
+    width: calc(100% - var(--nav-width-contracted));
+}
+
+.topbar-icons {
+    color: var(--gray3);
+}
+
+.topbar-menu-left {
+    display: flex;
+}
+
+.topbar-menu-right {
+    display: flex;
+    margin-left: auto;
+    margin-right: 2rem;
+}
+
+.searchbox-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#searchbox {
+    border: none;
+}
+
+#searchbox::placeholder {
+    font-size: 1rem;
+}
+
+#searchbox:focus {
+    outline: none;
+}
+
+.searchbox-container:focus-within {
+    border-bottom: 2px solid var(--gray2);
+}
+
+
+.search-icon {
+    margin-right: 0.5rem;
+}
+
+
+.button-icon {
+    border: none;
+    cursor: pointer;
+    background: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+
+.userbox {
+    position: relative;
+    box-sizing: border-box;
+    min-width: 50px;
+    margin-left: 1rem;
+    text-decoration: none;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 45px;
+    height: 45px;
+    margin-right: 1rem;
+    border-radius: 50%;
+}
+
+.new-notification-circle {
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    border-radius: 50px;
+    top: 8px;
+    left: 6px;
+    background-color: var(--blue0);
+}
+
+.username {
+    display: block;
+    font-size: 1rem;
+    color: var(--gray3);
+    text-align: left;
+}
+
+.role {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--gray3);
+    text-align: left;
+}
+
+.logout-button {
+    align-self: center;
+    margin-left: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+}

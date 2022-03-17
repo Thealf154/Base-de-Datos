@@ -1,0 +1,101 @@
+@import 'themes.css';
+
+.show-page-container{
+    margin-bottom: 1rem;
+}
+
+.table-container {
+    background-color: var(--background-item);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.sort-button {
+    float: right;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.show-results {
+    padding-right: 1rem;
+    margin-left: 0.6rem;
+    margin-right: 0.6rem;
+}
+
+.sort-icon-desc {
+    transform: rotate(180deg);
+}
+
+.table-body {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 15px;
+}
+
+.table-header {
+    text-align: left;
+    padding: 1rem;
+    background-color: var(--gray1);
+    position: relative;
+}
+
+.table-cell {
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray2);
+    background-color: var(--background-item);
+}
+
+.table-row:last-child > .table-cell{
+    border: 0;
+}
+
+.table-thead {}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pagination-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.page-number {
+    border: none;
+    padding: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+.page-number:first-child{
+    margin-left: 0rem;
+}
+
+.number-active {
+    background-color: var(--purple0);
+    color: white;
+    border-radius: var(--item-radius);
+}
+
+.number-inactive {
+    border-radius: 30px;
+    background-color: transparent;
+    color: var(--gray6);
+}
+
+.page-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.page-button:enabled {
+    color: var(--purple0);
+}

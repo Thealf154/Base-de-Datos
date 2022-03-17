@@ -1,0 +1,25 @@
+.buttons-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+    grid-template-rows: minmax(1fr, 250px);
+}
+
+.button-component {
+    padding: 1.5rem;
+    position: relative;
+    background-color: var(--background-item);
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 15px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.button-icons {
+    margin-right: 1rem;
+}
+

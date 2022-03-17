@@ -1,0 +1,152 @@
+@import 'themes.css';
+
+#form-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--background);
+}
+
+#form-prompt {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem;
+    border-color: var(--gray3);
+    width: 450px;
+    border-radius: 20px;
+    background-color: var(--background-item);
+    margin: 0 auto;
+}
+
+#form-title-contracted {
+    margin: 0px;
+    margin-bottom: 1rem;
+}
+
+
+#form-title-spaced {
+    margin: 0px;
+    margin-bottom: 4rem;
+}
+
+.form-text {
+    font-size: 1.2rem;
+}
+
+#did-you-forget-pasword {
+    text-decoration: none;
+    margin-bottom: 1.4rem;
+    font-size: 1.3rem;
+    color: var(--primary-color);
+}
+
+#did-you-forget-pasword:visited {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+#submit-button {
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid;
+    font-size: 1.2rem;
+    background-color: var(--blue2);
+    color: white;
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+#submit-button:hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.label-container {
+    border: 1px solid var(--gray3);
+    padding: 2px;
+    display: flex;
+    align-content: center;
+    border-radius: 10px;
+    align-items: center;
+    margin-bottom: 1.8rem;
+    width: auto;
+}
+
+
+.label-icon {
+    width: 10%;
+    height: 25px;
+    margin-right: 20px;
+}
+
+#show-password {
+    height: 100%;
+}
+
+#warning-icon {
+    height: 30px;
+    width: 30px;
+}
+
+#form-warning {
+    display: flex;
+    align-items: center;
+    color: red;
+    margin-bottom: 1.4rem;
+    text-align: left;
+}
+
+#form-warning>span {
+    text-align: left;
+    margin-left: 1.2rem;
+}
+
+
+.text-input {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 15px;
+    border: none;
+    outline: none;
+}
+
+.label-container:focus-within {
+    border: 2px solid var(--primary-color) !important;
+}
+
+label {
+    font-size: 1.2rem;
+    align-self: flex-start;
+    margin-bottom: 1.7rem;
+}
+
+#show-pass {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 1.2rem;
+    cursor: pointer;
+}
+
+.form-icon {
+    color: var(--blue2);
+    align-self: center;
+}
+
+.gray-link {
+    color: var(--gray3);
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.gray-link:visited {
+    color: var(--gray3);
+}
+
+@media (max-width: 500px) {
+    #login-container {
+        background-color: var(--background-item);
+    }
+}
