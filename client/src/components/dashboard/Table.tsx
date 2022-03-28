@@ -6,8 +6,15 @@ import {
   IoChevronForwardOutline,
   IoChevronUpOutline,
 } from "react-icons/io5";
+import { tableColumns, tableData } from "../../types/types";
 
-const Table = ({ columns, data }) => {
+const Table = ({
+  columns,
+  data,
+}: {
+  columns: any;
+  data: tableData[];
+}) => {
   const {
     getTableProps,
     getTableBodyProps,
@@ -142,7 +149,13 @@ const Table = ({ columns, data }) => {
   );
 };
 
-const SortButton = ({ isSorted, isSortedDesc }) => {
+const SortButton = ({
+  isSorted,
+  isSortedDesc,
+}: {
+  isSorted: boolean;
+  isSortedDesc: boolean | undefined;
+}) => {
   return (
     <button className="sort-button">
       <IoChevronUpOutline

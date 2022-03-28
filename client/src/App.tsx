@@ -25,7 +25,7 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Routes>
-            <Route exact path="/" element={<Layout />}>
+            <Route path="/" element={<Layout />}>
               <Route path="login" element={<LoginPage />} />
               <Route path="recover-password" element={<RecoverPassword />} />
               <Route path="dashboard" element={<Dashboard />}>

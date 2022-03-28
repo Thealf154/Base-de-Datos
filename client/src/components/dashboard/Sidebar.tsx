@@ -13,7 +13,7 @@ import {
   IoShieldOutline,
 } from "react-icons/io5";
 
-const Sidebar = ({ isSidebarExpanded }) => {
+const Sidebar = ({ isSidebarExpanded }: {isSidebarExpanded: boolean }) => {
   return (
     <>
       <IconContext.Provider

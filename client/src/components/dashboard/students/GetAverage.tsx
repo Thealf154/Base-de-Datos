@@ -17,7 +17,7 @@ const GetAverage = () => {
       arrow={false}
       modal
     >
-      {(close) => (
+      {(close: VoidFunction) => (
         <div className="popup-container">
           <button className="popup-close-button">
             <IoCloseOutline onClick={() => close()} className="close-popup" />

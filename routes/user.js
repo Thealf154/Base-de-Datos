@@ -34,7 +34,7 @@ user.get("/", async (req, res, next) => {
 //We use POST since the data taken is encoded in the body
 user.post("/login", async (req, res, next) => {
   const { user_email, user_password } = req.body;
-  const query = `SELECT * FROM user WHERE user_email = '${user_email}' AND user_password = '${user_password}';`;
+  const query = `SELECT * FROM users WHERE email = '${user_email}' AND password = '${user_password}';`;
   const rows = await db.query(query);
 
   if (user_email, user_password) {
@@ -45,10 +45,10 @@ user.post("/login", async (req, res, next) => {
         user_id : rows[0].user_id,
         user_email : rows[0].user_email
       }, "debugkey"); //Debugkey is a varaiable not visible in the code but only in the server
-      return res.status(200).json({ code: 200, message: token });
+      return res.status(200).json({ code: 200, accessToken: token });
     }
     else
-      return res.status(200).json({code : 200, message : "Usuario y/o contraseña equivocada"})
+      return res.status(500).json({code : 500, message : "User or password incorrect", message: "login_error"})
   }
     else
       return res

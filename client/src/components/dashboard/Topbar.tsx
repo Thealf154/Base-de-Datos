@@ -1,6 +1,5 @@
 import React from "react";
 import { IconContext } from "react-icons";
-import Profile from "../../assets/profile.png";
 import {
   IoLogOutOutline,
   IoNotificationsOutline,
@@ -10,33 +9,41 @@ import {
 import "../../css/topbar.css";
 import { useAuth } from "../../hooks/authHook";
 import { useNavigate } from "react-router";
+import Profile from "../../assets/profile.png";
 
-const Topbar = ({ isSidebarExpanded, onSidebarIsExpanded }) => {
+type Props = {
+  isSidebarExpanded: boolean;
+  onSidebarIsExpanded: VoidFunction;
+};
+
+const Topbar = (props: Props) => {
   const auth = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     auth.signout(() => {
-      navigate('/login');
-    })
-  }
+      navigate("/login");
+    });
+  };
 
   return (
     <IconContext.Provider value={{ className: "topbar-icons", size: "1.6em" }}>
       <nav
         className={
-          isSidebarExpanded ? "topbar top-expanded" : "topbar top-contracted"
+          props.isSidebarExpanded
+            ? "topbar top-expanded"
+            : "topbar top-contracted"
         }
       >
         <div className="topbar-menu-left">
           <button
             className="expand-contract-sidebar button-icon"
-            onClick={() => onSidebarIsExpanded()}
+            onClick={() => props.onSidebarIsExpanded()}
           >
             <IoReorderThreeOutline size={"2.2rem"} />
           </button>
           <div className="searchbox-container">
-            <IoSearchOutline size={"1.5rem"} className="search-icon" />
+            <IoSearchOutline size={"1.5rem"} />
             <input
               type="text"
               name="searchbox"

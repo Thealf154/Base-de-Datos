@@ -17,10 +17,10 @@ const AddStudent = () => {
       arrow={false}
       modal
     >
-      {(close) => (
+      {(close: VoidFunction) => (
         <div className="popup-container">
-          <button className="popup-close-button">
-            <IoCloseOutline onClick={() => close()} className="close-popup"/>
+          <button className="popup-close-button" onClick={() => close()}>
+            <IoCloseOutline  className="close-popup"/>
           </button>
           <form
             action="popup-title"

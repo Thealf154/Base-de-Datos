@@ -9,7 +9,7 @@ function RecoverPassword() {
   const [timeLeft, setTimeLeft] = useState(12000);
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { user } = document.forms[0];
 
@@ -70,14 +70,14 @@ function RecoverPassword() {
                 className="text-input"
                 placeholder="Ingresa tu email"
               />
-              <IoMail className="label-icon" />
+              <IoMail />
             </div>
             <input type="submit" value="Enviar" id="submit-button" />
           </>
         ) : (
           <>
             <h1 id="form-title-contracted">Checa tu correo</h1>
-            <IoMailOpenOutline size={"5rem"} className="form-icon" />
+            <IoMailOpenOutline size={"5rem"} />
             <p className="form-text">
               Se ha enviado un correo a {censorUser()} con instrucciones para
               recuperar tu contraseña.

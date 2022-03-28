@@ -14,6 +14,6 @@ module.exports = ((req, res, next) => {
   }
   catch(error)
   {
-    return res.status(401).json({ code: 401, message: "No tienes acceso"})
+    return res.status(401).json({ code: 401, message: "No tienes acceso", error: error})
   }
 });

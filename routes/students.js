@@ -1,17 +1,18 @@
 const express = require("express");
-const pokemonRoutes = express.Router();
+const students = express.Router();
 const db = require("../config/database");
+const auth = require('../middleware/auth');
 
-pokemonRoutes.get("/", async (req, res, next) => {
+students.get("/", auth, async (req, res, next) => {
   //This will wait for the database and won't execute
   //anything else until a response
-  const pkmn = await db.query("SELECT * FROM pokemon");
+  const stdnt = await db.query("SELECT * FROM students");
   //Sends the database as a json, but only if the format is already in a json
-  return res.status(200).json({ code: 200, message: pkmn });
+  return res.status(200).json({ code: 200, message: stdnt });
 });
 
 //Expresión regular que acepta un grupo de tres números
-pokemonRoutes.get("/:id([0-9]{1,3})", async (req, res, next) => {
+students.get("/:id([0-9]{1,3})", async (req, res, next) => {
   const pokemon = await db.query("SELECT * FROM pokemon");
   const id = req.params.id - 1;
   if (id >= 0 && id < 722) {
@@ -21,7 +22,7 @@ pokemonRoutes.get("/:id([0-9]{1,3})", async (req, res, next) => {
 });
 
 //This only receives text requests
-pokemonRoutes.get("/:name([A-Za-z]+)", async (req, res, next) => {
+students.get("/:name([A-Za-z]+)", async (req, res, next) => {
   const name = req.params.name;
   let pokemon = await db.query(
     `SELECT pok_name FROM pokemon WHERE pok_name LIKE '%${name}%'`
@@ -34,7 +35,7 @@ pokemonRoutes.get("/:name([A-Za-z]+)", async (req, res, next) => {
 });
 
 /* Post, Delete, and other routes*/
-pokemonRoutes.post("/", async (req, res, next) => {
+students.post("/", async (req, res, next) => {
   const { pok_name, pok_height, pok_weight, pok_base_experience } = req.body;
 
   if (pok_name && pok_height && pok_base_experience && pok_weight) {
@@ -54,7 +55,7 @@ pokemonRoutes.post("/", async (req, res, next) => {
     .json({ code: 500, message: "Pokemon insertado sin éxito" });
 });
 
-pokemonRoutes.delete("/:id([0-9]{1,3})", async (req, res, next) => {
+students.delete("/:id([0-9]{1,3})", async (req, res, next) => {
   const query = `DELETE FROM pokemon WHERE pok_id=${req.params.id}`;
   const rows = await db.query(query);
 
@@ -68,7 +69,7 @@ pokemonRoutes.delete("/:id([0-9]{1,3})", async (req, res, next) => {
 });
 
 //PUT is for changing all the values of datacell
-pokemonRoutes.put("/:id([0-9]{1,3})", async (req, res, next) => {
+students.put("/:id([0-9]{1,3})", async (req, res, next) => {
   const { pok_name, pok_height, pok_weight, pok_base_experience } = req.body;
 
   if (pok_name && pok_height && pok_base_experience && pok_weight) {
@@ -88,7 +89,7 @@ pokemonRoutes.put("/:id([0-9]{1,3})", async (req, res, next) => {
     .json({ code: 500, message: "Pokemon actulizado sin éxito" });
 });
 
-pokemonRoutes.patch("/:id([0-9]{1,3})", async (req, res, next) => {
+students.patch("/:id([0-9]{1,3})", async (req, res, next) => {
   const { pok_name, pok_height, pok_weight, pok_base_experience } = req.body;
 
   if (req.body.pok_name) {
@@ -107,4 +108,4 @@ pokemonRoutes.patch("/:id([0-9]{1,3})", async (req, res, next) => {
   return res.status(500).json({ code: 500, message: "No existe el Pokemon" });
 });
 
-module.exports = pokemonRoutes;
+module.exports = students;

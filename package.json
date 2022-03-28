@@ -4,7 +4,9 @@
   "description": "Sistema de control escolar, backend y frontend",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index.js"
+    "start": "node index.js",
+    "test": "",
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "node",
@@ -12,5 +14,12 @@
     "sql"
   ],
   "author": "Alfredo Vanegas Arcega",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15"
+  }
 }
