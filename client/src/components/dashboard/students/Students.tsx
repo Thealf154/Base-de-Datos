@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Table from "../Table";
 import AddStudent from "./AddStudent";
 import GetAverage from "./GetAverage";
-import "../../../css/students.css";
 import { IconContext } from "react-icons";
+import { students, studentsAPIResponse } from "types/types";
+import { useAuth } from "hooks/authHook";
+import axios from "axios";
+import "types/types";
+import "css/students.css";
 
 const Students = () => {
+  const [data, setData] = useState<Array<students> | null>(null);
+  const auth = useAuth();
+
   const columns = React.useMemo(
     () => [
       {
@@ -18,69 +25,42 @@ const Students = () => {
       },
       {
         Header: "Apellidos",
-        accessor: "lastName",
+        accessor: "last_name",
       },
       {
         Header: "Sexo",
         accessor: "sex",
       },
+      {
+        Header: "Grade",
+        accessor: "grade",
+      },
     ],
     []
   );
 
-  const data = React.useMemo(
-    () => [
-      {
-        id: Math.floor(Math.random() * 100000),
-        name: "Alfredo",
-        lastName: "Vanegas Arcega",
-        sex: "Hombre",
-      },
-      {
-        id: Math.floor(Math.random() * 100000),
-        name: "Juan Carlos",
-        lastName: "Santana",
-        sex: "Mujer",
-      },
-      {
-        id: Math.floor(Math.random() * 100000),
-        name: "Alejandro",
-        lastName: "Linares Figueroa",
-        sex: "No binario",
-      },
-      {
-        id: Math.floor(Math.random() * 100000),
-        name: "Carlos",
-        lastName: "Orduña",
-        sex: "No binario",
-      },
-      {
-        id: Math.floor(Math.random() * 100000),
-        name: "Eroth",
-        lastName: "Aválos Guerra",
-        sex: "Hombre",
-      },
-      {
-        id: Math.floor(Math.random() * 100000),
-        name: "Erika",
-        lastName: "Constantino Pulido",
-        sex: "Mujer",
-      },
-      {
-        id: Math.floor(Math.random() * 100000),
-        name: "Carlos",
-        lastName: "Orduña",
-        sex: "No binario",
-      },
-      {
-        id: Math.floor(Math.random() * 100000),
-        name: "Raymundo",
-        lastName: "García García",
-        sex: "Hombre",
-      },
-    ],
-    []
-  );
+  const studentData = React.useMemo(() => data, [data]);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:3000/students",
+      data: { accessToken: auth.accessToken },
+    })
+      .then((response) => {
+        const students = response.data.students as Array<students>;
+        /*students.map((element) => {
+          element['lastAndMiddleName'] = element.last_name + element.middle_name;
+        });*/
+        setData(students);
+      })
+      .catch((error) => {
+        if (error.response.data.message === "login_error") {
+        } else {
+        }
+      });
+    return () => {};
+  });
 
   return (
     <div className="component-container">
@@ -92,12 +72,12 @@ const Students = () => {
               value={{ className: "button-icons", size: "1.5rem" }}
             >
               <AddStudent />
-              <GetAverage />
+              <GetAverage students={studentData}/>
             </IconContext.Provider>
           </div>
         </div>
         <div className="grid-item">
-          <Table data={data} columns={columns} />
+          {studentData ? <Table data={studentData} columns={columns} /> : null}
         </div>
       </div>
     </div>
