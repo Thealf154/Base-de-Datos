@@ -1,25 +1,24 @@
 import React from "react";
 import { useTable, useSortBy, usePagination } from "react-table";
-import "../../css/table.css";
+import "css/table.css";
 import {
   IoChevronBackOutline,
   IoChevronForwardOutline,
   IoChevronUpOutline,
 } from "react-icons/io5";
-import { tableColumns, tableData } from "../../types/types";
+import { tableData } from "../../types/types";
 
 const Table = ({
   columns,
   data,
 }: {
   columns: any;
-  data: tableData[];
+  data: any;
 }) => {
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
     prepareRow,
     page, // Instead of using 'rows', we'll use page,
     // which has only the rows for the active page
@@ -28,7 +27,6 @@ const Table = ({
     canPreviousPage,
     canNextPage,
     pageOptions,
-    pageCount,
     gotoPage,
     nextPage,
     previousPage,
