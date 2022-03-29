@@ -2,7 +2,7 @@ import React from "react";
 import { IoAddOutline, IoCloseOutline } from "react-icons/io5";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-import "../../../css/popup.css"
+import "css/popup.css"
 
 const AddStudent = () => {
   return (
