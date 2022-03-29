@@ -8,7 +8,6 @@ import {
   IoHomeOutline,
   IoPersonOutline,
   IoRocket,
-  IoRocketOutline,
   IoSchoolOutline,
   IoShieldOutline,
 } from "react-icons/io5";
