@@ -15,3 +15,19 @@ export interface tableData {
   lastName: string;
   sex: string;
 }
+
+export interface studentsAPIResponse {
+  code: number;
+  students: Array<students>;
+}
+
+export interface students {
+  id: number;
+  name: string;
+  middle_name: string;
+  last_name: string;
+  sex: string;
+  username: string;
+  grade: number;
+  email: string;
+}
