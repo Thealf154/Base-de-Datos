@@ -18,7 +18,7 @@ import useTheme from "./hooks/themeHook";
 import "./App.css";
 
 function App() {
-  useTheme();
+  useTheme("light");
 
   return (
     <>
