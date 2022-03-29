@@ -1,10 +1,21 @@
-import React from "react";
 import { IoCalculatorOutline, IoCloseOutline } from "react-icons/io5";
 import Popup from "reactjs-popup";
+import "types/types";
 import "reactjs-popup/dist/index.css";
-import "../../../css/popup.css";
+import "css/popup.css";
+import { students } from "types/types";
 
-const GetAverage = () => {
+const GetAverage = ({ students }: { students: students[] | null }) => {
+  const options = students
+    ? students.map((element) => {
+        return (
+          <option key={element.id} value={element.id}>
+            {element.id + ' - ' + element.name}
+          </option>
+        );
+      })
+    : null;
+
   return (
     <Popup
       trigger={
@@ -24,6 +35,19 @@ const GetAverage = () => {
           </button>
           <form action="popup-title" className="popup-form" spellCheck="false">
             <h2 className="popup-title">Calcular Promedio</h2>
+            <div className="input-container">
+              <label htmlFor="student-id" className="popup-label">
+                Expediente
+              </label>
+              <select
+                name="student-id"
+                id="student-id"
+                className="popup-input"
+                required
+              >
+                {options}
+              </select>
+            </div>
             <div className="input-container">
               <label htmlFor="first-partial" className="popup-label">
                 Primer parcial
