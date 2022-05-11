@@ -16,25 +16,36 @@
 .input-container {
     display: flex;
     align-items: center;
-    margin-bottom: 1.5rem;
+}
+
+.input-item{
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-right: 1.2rem;
 }
 
 .popup-label {
     margin: 0;
-    width: 50%;
+    color: var(--gray3);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
 }
 
 .popup-title {
     margin: 0;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+    align-self: center;
 }
 
 .popup-input {
-    width: 50%;
     padding: 0.5rem;
     border-radius: 5px;
     outline: 1px solid var(--gray3);
     border: none;
+    margin-bottom: 1rem;
 }
 
 .popup-input:focus-visible {
@@ -45,33 +56,36 @@
 
 .popup-form-submit {
     padding: 0.8rem;
-    border-radius: 20px;
+    border-radius: 15px;
     border: 1px solid;
     font-size: 1.2rem;
-    background-color: var(--blue1);
-    margin-top: 1rem;
+    background-color: var(--blue2);
+    margin-top: 2rem;
     color: white;
     cursor: pointer;
-    width: 50%;
+    width: 80%;
     align-self: center;
 }
 
 .popup-close-button {
     display: flex;
-    border-radius: 50px;
+    border-radius: 30px;
     padding: 0.3rem;
     align-items: center;
-    background-color: var(--blue1);
+    background-color: var(--gray0);
     justify-content: center;
     outline: none;
     border: none;
     position: absolute;
-    right: -20px;
     cursor: pointer;
-    top: -15px;
+    right: 0;
 }
 
 .close-popup {
     margin: 0 !important;
-    color: var(--gray0);
+    color: var(--gray3);
+}
+
+#studentID {
+    width: 100%;
 }

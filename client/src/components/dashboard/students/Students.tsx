@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import Table from "../Table";
 import AddStudent from "./AddStudent";
 import GetAverage from "./GetAverage";
+import EditStudent from "./EditStudent";
 import { IconContext } from "react-icons";
 import { students, studentsAPIResponse } from "types/types";
 import { useAuth } from "hooks/authHook";
 import axios from "axios";
 import "types/types";
 import "css/students.css";
+import DeleteStudent from "./DeleteStudent";
 
 const Students = () => {
   const [data, setData] = useState<Array<students> | null>(null);
+  const [selectedRows, setSelectedRows] = useState([{}]);
   const auth = useAuth();
 
   const columns = React.useMemo(
@@ -21,18 +24,30 @@ const Students = () => {
       },
       {
         Header: "Nombre",
-        accessor: "name",
+        accessor: "first_name",
       },
       {
         Header: "Apellidos",
-        accessor: "last_name",
+        accessor: "middle_and_last_name",
       },
       {
-        Header: "Sexo",
-        accessor: "sex",
+        Header: "Género",
+        accessor: "gender",
       },
       {
-        Header: "Grade",
+        Header: "Dirección",
+        accessor: "address",
+      },
+      {
+        Header: "Facultad",
+        accessor: "faculty",
+      },
+      {
+        Header: "Semestre",
+        accessor: "semester",
+      },
+      {
+        Header: "Calificación",
         accessor: "grade",
       },
     ],
@@ -41,26 +56,53 @@ const Students = () => {
 
   const studentData = React.useMemo(() => data, [data]);
 
+  const handleSetSelectedRows = (rows: Array<{}>) => {
+    setSelectedRows(rows);
+  };
+
   useEffect(() => {
-    axios({
-      method: "GET",
-      url: "http://localhost:3000/students",
-      data: { accessToken: auth.accessToken },
-    })
-      .then((response) => {
-        const students = response.data.students as Array<students>;
-        /*students.map((element) => {
+    if (auth.accessToken) {
+      axios({
+        method: "GET",
+        url: "http://localhost:3000/students",
+        headers: { authorization: auth.accessToken },
+      })
+        .then((response) => {
+          const students = response.data.message as Array<students>;
+          /*students.map((element) => {
           element['lastAndMiddleName'] = element.last_name + element.middle_name;
         });*/
-        setData(students);
-      })
-      .catch((error) => {
-        if (error.response.data.message === "login_error") {
-        } else {
-        }
-      });
+          setData(students);
+        })
+        .catch((error) => {
+          if (error.response.data.message === "login_error") {
+          } else {
+          }
+        });
+    }
     return () => {};
-  });
+  }, []);
+
+  const handleDeleteRow = (id: string) => {
+    if (auth.accessToken) {
+      axios({
+        method: "DELETE",
+        url: "http://localhost:3000/students",
+        headers: { authorization: auth.accessToken },
+        data: {
+          id: id,
+        },
+      })
+        .then((response) => {
+          window.location.reload();
+        })
+        .catch((error) => {
+          if (error.response.data.message === "login_error") {
+          } else {
+          }
+        });
+    }
+  };
 
   return (
     <div className="component-container">
@@ -72,12 +114,21 @@ const Students = () => {
               value={{ className: "button-icons", size: "1.5rem" }}
             >
               <AddStudent />
-              <GetAverage students={studentData}/>
+              <EditStudent />
+              <DeleteStudent />
+              <GetAverage students={studentData} />
             </IconContext.Provider>
           </div>
         </div>
         <div className="grid-item">
-          {studentData ? <Table data={studentData} columns={columns} /> : null}
+          {studentData ? (
+            <Table
+              data={studentData}
+              columns={columns}
+              onDeleteRow={handleDeleteRow}
+              onSelectedRows={handleSetSelectedRows}
+            />
+          ) : null}
         </div>
       </div>
     </div>

@@ -1,11 +1,10 @@
 .buttons-container {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(150px, 1fr));
-    grid-template-rows: minmax(1fr, 250px);
+    display: flex;
 }
 
 .button-component {
     padding: 1.5rem;
+    flex-grow: 1;
     position: relative;
     background-color: var(--background-item);
     margin-right: 1rem;
@@ -19,7 +18,48 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+.button-component:last-child {
+    margin-right: 0;
+}
+
+.male-icon {
+    margin-right: 0.5rem;
+    color: rgb(0, 140, 255);
+}
+
+.female-icon {
+    margin-right: 0.5rem;
+    color: rgb(247, 149, 217);
+}
+
+.mail-link {
+    color: var(--blue1) !important;
+    text-decoration: none;
+}
+
+.grade-link {
+    width: 20%;
+    padding: 0.2rem;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.grade-approved {
+    background-color: #00cd1c;
+}
+
+.grade-failed {
+    background-color: #fa5c7c;
+}
+
 .button-icons {
     margin-right: 1rem;
 }
 
+@media (max-width: 700px) {
+    .button-component {
+        grid-column: span 2 / auto;
+    }
+}

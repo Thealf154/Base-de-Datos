@@ -1,1 +1,21 @@
 @import './css/themes.css';
+
+button {
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+.text-field {
+    padding: 0.5rem;
+    border-radius: 5px;
+    outline: 1px solid var(--gray3);
+    border: none;
+    margin-bottom: 1rem;
+}
+
+.text-field:focus-visible {
+    outline: none;
+    border: none;
+    outline: 2px solid var(--primary-color) !important;
+}

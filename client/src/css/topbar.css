@@ -8,6 +8,7 @@
     position: fixed;
     height: var(--topbar-width); 
     box-shadow: rgb(149 157 165 / 20%) 20px 10px 24px;
+    z-index: 3;
 }
 
 .top-expanded {
